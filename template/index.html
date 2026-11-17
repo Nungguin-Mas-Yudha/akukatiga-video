@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkuKatiga Studio</title>
+    <meta
+      name="description"
+      content="Pratinjau dan QC per scene untuk video AkuKatiga: memutar komponen Reel yang sama dengan render, 2D maupun 3D."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23242424'/%3E%3Ctext x='16' y='21' font-family='system-ui' font-size='13' font-weight='700' text-anchor='middle' fill='%23f5f5f5'%3EAK%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html, body, #root {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #121212;
+        color: #fafafa;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .app-boot,
+      .app-fatal {
+        font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .app-boot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      .app-boot p {
+        margin: 0;
+        font-size: 13px;
+        color: #a3a3a3;
+      }
+      .app-fatal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+        box-sizing: border-box;
+        background: #121212;
+        color: #fafafa;
+      }
+      .app-fatal-card {
+        max-width: 480px;
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid #c9645a;
+        background: #1c1c1c;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .app-fatal-card p,
+      .app-fatal-card pre {
+        margin: 0;
+        font-size: 12px;
+        color: #a3a3a3;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .app-fatal-card button {
+        align-self: center;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #525252;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fafafa;
+        cursor: pointer;
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-boot" id="app-boot-status">
+        <strong>AkuKatiga Studio</strong>
+        <p>Menyiapkan studio pratinjau...</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var RETRY_KEY = "akukatiga.boot.retry";
+        var boot = (window.__AKUKATIGA_BOOT__ = {
+          mounted: false,
+          errors: [],
+          markMounted: function () {
+            boot.mounted = true;
+            try {
+              sessionStorage.removeItem(RETRY_KEY);
+            } catch (e) {}
+          },
+          reportError: function (msg) {
+            if (!msg) return;
+            if (boot.errors.length < 8) boot.errors.push(String(msg));
+            if (!boot.mounted) scheduleFailUi();
+          },
+        });
+
+        var shown = false;
+        var failTimer = null;
+
+        function canAutoRetry() {
+          try {
+            var last = Number(sessionStorage.getItem(RETRY_KEY) || "0");
+            return !last || Date.now() - last > 15000;
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function triggerReload(isAuto) {
+          try {
+            if (isAuto) sessionStorage.setItem(RETRY_KEY, String(Date.now()));
+            else sessionStorage.removeItem(RETRY_KEY);
+          } catch (e) {}
+          window.location.reload();
+        }
+
+        function renderFatal(title, detail) {
+          if (boot.mounted || shown) return;
+          shown = true;
+          var root = document.getElementById("root");
+          if (!root) return;
+          root.innerHTML = "";
+          var wrap = document.createElement("div");
+          wrap.className = "app-fatal";
+          var card = document.createElement("div");
+          card.className = "app-fatal-card";
+          var strong = document.createElement("strong");
+          strong.textContent = title;
+          var p = document.createElement("pre");
+          p.textContent = detail;
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = "Muat ulang";
+          btn.onclick = function () {
+            triggerReload(false);
+          };
+          card.appendChild(strong);
+          card.appendChild(p);
+          card.appendChild(btn);
+          wrap.appendChild(card);
+          root.appendChild(wrap);
+        }
+
+        function scheduleFailUi() {
+          if (failTimer) clearTimeout(failTimer);
+          failTimer = setTimeout(function () {
+            if (boot.mounted) return;
+            if (boot.errors.length > 0 && canAutoRetry()) {
+              var status = document.getElementById("app-boot-status");
+              if (status) {
+                var p = status.querySelector("p");
+                if (p) p.textContent = "Koneksi modul terputus, memuat ulang otomatis...";
+              }
+              setTimeout(function () {
+                if (!boot.mounted) triggerReload(true);
+              }, 500);
+              return;
+            }
+            var detail = boot.errors.length
+              ? boot.errors.join("\n")
+              : "Modul aplikasi belum selesai dimuat (kemungkinan koneksi dev server atau cache hard-reload).";
+            renderFatal("AkuKatiga Studio gagal dimuat", detail);
+          }, 600);
+        }
+
+        window.addEventListener(
+          "error",
+          function (ev) {
+            if (boot.mounted) return;
+            var target = ev && ev.target;
+            if (target && (target.tagName === "SCRIPT" || target.tagName === "LINK")) {
+              var src = target.src || target.href || "";
+              if (src && !src.includes("fonts.googleapis.com")) {
+                boot.reportError("Gagal memuat resource: " + src);
+              }
+              return;
+            }
+            if (ev && ev.message) {
+              boot.reportError(ev.message + (ev.filename ? " (" + ev.filename + ":" + ev.lineno + ")" : ""));
+            }
+          },
+          true
+        );
+
+        window.addEventListener("unhandledrejection", function (ev) {
+          if (boot.mounted) return;
+          var reason = ev && ev.reason;
+          boot.reportError(reason && reason.message ? reason.message : String(reason || "Unhandled promise rejection"));
+        });
+
+        setTimeout(function () {
+          if (boot.mounted) return;
+          if (canAutoRetry()) {
+            triggerReload(true);
+          } else {
+            renderFatal(
+              "Waktu muat AkuKatiga Studio habis",
+              boot.errors.length
+                ? boot.errors.join("\n")
+                : "Aplikasi membutuhkan waktu lebih lama dari 9 detik untuk inisialisasi. Klik Muat ulang untuk mencoba lagi."
+            );
+          }
+        }, 9000);
+      })();
+    </script>
+    <script
+      type="module"
+      src="/src/main.tsx"
+      onerror="window.__AKUKATIGA_BOOT__&&window.__AKUKATIGA_BOOT__.reportError('Gagal memuat /src/main.tsx')"
+    ></script>
+  </body>
+</html>

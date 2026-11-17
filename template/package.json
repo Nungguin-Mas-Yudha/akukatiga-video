@@ -1,0 +1,71 @@
+{
+  "name": "akukatiga",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "studio": "node engine/studio/studio.mjs",
+    "custom-editor": "vite --port=3400",
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --port=3000 --host=0.0.0.0"
+  },
+  "dependencies": {
+    "@astryxdesign/core": "^0.7.16",
+    "@astryxdesign/theme-neutral": "^0.7.16",
+    "@composio/core": "^0.10.0",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@remotion/bundler": "4.0.540",
+    "@remotion/cli": "4.0.540",
+    "@remotion/effects": "4.0.540",
+    "@remotion/fonts": "4.0.540",
+    "@remotion/google-fonts": "4.0.540",
+    "@remotion/install-whisper-cpp": "4.0.540",
+    "@remotion/layout-utils": "4.0.540",
+    "@remotion/lottie": "4.0.540",
+    "@remotion/media-utils": "4.0.540",
+    "@remotion/motion-blur": "4.0.540",
+    "@remotion/noise": "4.0.540",
+    "@remotion/paths": "4.0.540",
+    "@remotion/player": "4.0.540",
+    "@remotion/renderer": "4.0.540",
+    "@remotion/rough-notation": "4.0.540",
+    "@remotion/shapes": "4.0.540",
+    "@remotion/skia": "4.0.540",
+    "@remotion/three": "4.0.540",
+    "@remotion/transitions": "4.0.540",
+    "@shopify/react-native-skia": "2.14.0",
+    "@stylexjs/stylex": "^0.19.2",
+    "@types/three": "0.186.0",
+    "esbuild": "0.28.1",
+    "lottie-web": "5.13.0",
+    "puppeteer-core": "^25.11.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-native-web": "0.21.4",
+    "remotion": "4.0.540",
+    "sharp": "^0.35.4",
+    "tesseract.js": "^6.0.0",
+    "three": "0.170.0",
+    "zod": "^4.6.7"
+  },
+  "optionalDependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "playwright": "^1.50.0"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "^0.7.16",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.17",
+    "@vitejs/plugin-react": "^5.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7"
+  },
+  "overrides": {
+    "zod": "$zod"
+  }
+}

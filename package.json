@@ -1,0 +1,27 @@
+{
+  "name": "@akukatiga/video",
+  "version": "0.1.0",
+  "description": "AkuKatiga channel toolkit: install the video engine, skills and folder skeleton",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "video": "./bin/video.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "template",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "refresh-template": "node scripts/refresh-template.mjs",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "license": "UNLICENSED"
+}

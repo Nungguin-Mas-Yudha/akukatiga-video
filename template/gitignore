@@ -1,0 +1,51 @@
+node_modules/
+.env*
+CLAUDE.local.md
+.DS_Store
+
+# Keep rendered deliverables local; commit the scripts, source, subtitles and QC notes.
+/workspace/output/**/*.mp4
+
+# ElevenLabs raw takes are reproducible. Keep only preview MP3s referenced by Remotion.
+
+# Dependencies
+**/node_modules/
+# AI models & weights
+models/
+**/models/
+*.bin
+*.onnx
+# Build outputs & huge renders (>20MB video files)
+*.mp4
+*.mov
+*.webm
+**/output/
+**/render/*.mp4
+**/render/*.mov
+**/review/*.mp4
+# Temporary render frames & draft review stills
+**/stills/
+**/review/
+**/dailies-*/
+**/qc/dailies-*/
+# Environment & temporary files
+*.log
+Thumbs.db
+
+# Per video: render dan still tinjauan tetap lokal
+videos/*/scratch/stills/
+
+# Video hasil render tidak di-commit dulu (file tetap ada di disk)
+
+# Toolkit runtime: node/ffmpeg, cache, dan build editor (dibuat ulang otomatis)
+.keyframes/
+
+# Python bytecode dari skrip engine
+__pycache__/
+*.pyc
+
+# Keadaan hasil scripts/doctor.mjs, dibuat ulang tiap dijalankan
+/context/doctor.json
+
+# build Vite (root app); dibangun di dalam image
+/dist/

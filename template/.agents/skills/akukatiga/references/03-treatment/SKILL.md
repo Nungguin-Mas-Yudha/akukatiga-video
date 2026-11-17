@@ -1,5 +1,7 @@
 # 3 — Treatment + plan
 
+**Gerbang mesin**: `node ../../scripts/py.mjs scripts/check.py stage <slug> 3` — harus `exit 0`.
+
 **Tujuan**: satu halaman yang menyetujui cerita sebelum ada pixel: treatment dan satu baris per beat.
 **Masuk**: `plans/caption.txt`. **Keluar**: `plans/treatment.md` (konsep, thread object, tabel `HANDOFF`,
 dua pasang plant-and-payoff, the one big move, 3-5 ide hook) dan `plans/plan.md` (satu baris per beat:
@@ -7,6 +9,7 @@ aktor, tempat, kata pemicu → peristiwa, angle, sebab kamera, "2.5D: how").
 
 **Gerbang**: **creator menyetujui hook, treatment, dan plan dalam kata sebelum ada pixel.** Tiap beat punya
 aktor di suatu tempat; tidak ada dua scene berurutan dengan framing yang sama. Tiga opsi hanya untuk hook.
+Tiap baris `plan.md` menyebut **objek yang tampil** — daftar itulah yang jadi input wajib tahap 4.
 
 **Baca di folder ini**
 

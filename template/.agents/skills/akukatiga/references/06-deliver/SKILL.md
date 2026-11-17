@@ -1,5 +1,7 @@
 # 6 — Sound + deliver
 
+**Gerbang mesin**: `node ../../scripts/py.mjs scripts/check.py stage <slug> 6` — harus `exit 0`.
+
 **Tujuan**: satu master per format yang sudah dinormalisasi, plus caption dan cover untuk unggah.
 **Masuk**: semua scene `disetujui`. **Keluar**: `out/YYYY-MM-DD/NN-<slug>.mp4`, `caption.txt`,
 `cover.jpg`, disalin ke `workspace/output/<folder>/`; untuk 16:9 ditambah thumbnail dan description.
@@ -24,6 +26,6 @@ Format: [`../format/reels.md`](../format/reels.md) (narasi saja, tanpa musik/SFX
 
 ```bash
 node render.mjs <slug>
-# -> engine/full-visual/output/YYYY-MM-DD/NN-<slug>.mp4
+# -> videos/<slug>/out/YYYY-MM-DD/NN-<slug>.mp4
 # salin ke workspace/output/<folder>/ bersama caption.txt dan cover.jpg
 ```

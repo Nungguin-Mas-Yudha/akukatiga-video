@@ -1,6 +1,6 @@
 {
   "name": "@akukatiga/video",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "AkuKatiga channel toolkit: install the video engine, skills and folder skeleton",
   "private": false,
   "type": "module",

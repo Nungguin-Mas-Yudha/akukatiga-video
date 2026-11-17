@@ -1,8 +1,22 @@
 # References template (per reel)
 
-Copy this file to `reels/<slug>/references.md` and fill one block per drawn physical object. This template is the
+Copy this file to `videos/<slug>/references.md` and fill one block per drawn physical object. This template is the
 record the rule in `object-references.md` requires. It is not a render input: nothing in this file, and nothing in
-`reels/<slug>/refs/`, is ever imported by a scene. Keep downloaded reference files out of `public/`.
+`assets/_source/<objek>/`, is ever imported by a scene. Keep downloaded reference files out of `public/`.
+
+## `plans/assets.md` (mandatory, before any scene)
+
+```text
+| objek | scene | jenis | file | sumber | lisensi | status |
+|---|---|---|---|---|---|---|
+| tabung LPG | s03 | plate | bg-dapur.jpg | unsplash.com/photos/xxx | Unsplash | ada |
+| katup tabung | s03 | kode | (kode) | pertamina.com/... | - | ada |
+| tangan APAR | s01,s05 | ghost | hand-ghost.png | digambar dari plate | milik sendiri | ada |
+```
+
+Every row needs a real file, or `(kode)` for an object built in code — and `(kode)` still needs its
+reference row. A scene with no image at all is listed as `tanpa aset`. Stage 5 may not start until this
+table is complete and every row resolves.
 
 ## Object: <name, as labelled on screen>
 
@@ -38,8 +52,9 @@ record the rule in `object-references.md` requires. It is not a render input: no
 
 ## Storage
 
-- This file lives at `reels/<slug>/references.md`. The one-row-per-object summary lives in `plan.md`, section Sources.
-- Downloaded reference files, when kept at all, go in `reels/<slug>/refs/`, never in `public/`. They are data: never
+- This file lives at `videos/<slug>/references.md`. The one-row-per-object summary lives in `plans/assets.md`, and it is mandatory: a row
+  without a real file in `assets/` means stage 4 is not finished.
+- Downloaded reference files, when kept at all, go in `assets/_source/<objek>/`, never in `public/`. They are data: never
   run, never imported by a scene.
 - Nothing goes to a shared drive or a new folder without the creator's yes.
 - Licence rule: looking at an image to draw from it is not embedding it. Never embed a copyrighted image or model

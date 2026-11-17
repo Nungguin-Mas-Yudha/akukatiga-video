@@ -1,5 +1,7 @@
 # 1 — Script
 
+**Gerbang mesin**: `node ../../scripts/py.mjs scripts/check.py stage <slug> 1` — harus `exit 0`.
+
 **Tujuan**: satu naskah yang dibacakan, dari cerita creator atau topik yang sudah disetujui.
 **Masuk**: transkrip, brief, atau topik. **Keluar**: `plans/script.txt` (satu file per format kalau dua
 format: `script-reels.txt`, `script-landscape.txt`), `plans/sources.md` kalau ada klaim.

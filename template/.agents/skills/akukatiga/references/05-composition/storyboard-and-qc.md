@@ -54,21 +54,23 @@ Run on the panel stills, in order, before any scene is finished. Write the resul
 
 ## QC loop (`scripts/check.py`, targets in `scripts/targets.json`)
 
-1. `check.py render <slug> <mp4>`: beat interval ≤ 1.2 s, longest hold ≤ 1.4 s, motion ≥ 0.6 of frames, detail within
-   the reference range, highlight p99 ≤ 225, shadow tint ≥ +2, at most 3 flashes a second, no text in Instagram's zones
-   after 0.5 s, no bare frame in a handover. A check that could not run is a FAIL.
-2. `check.py compare <slug> <mp4> --ref <reference.mp4>`: `reels/<slug>/review/side-by-side.jpg` and `scorecard.md`.
+1. `check.py render <slug> <mp4>`: the longest stretch with nothing moving (≤ 1.2 s) and bare frames inside a
+   handover (≤ 1 frame). When `scripts/targets.json` exists it also reads luma, contrast, motion, crushed black and
+   blown white against the reference the creator named, and WARNs when out of range. A check that could not run is a
+   FAIL; read every WARN and write the decision down.
+2. `check.py compare <slug> <mp4> --ref <reference.mp4>`: writes `videos/<slug>/review/side-by-side.jpg` (reference
+   left, this reel right, at 10%, 45% and 80% of each) and `review/scorecard.md` (duration, mean luma, contrast).
 3. A second reviewer, an Opus subagent that did not build the scenes, reads the jpg, the scorecard and stills at full
    size and lists what fails, frame by frame: does the picture show the word being said, one focus, object whole or
    cut on purpose, label readable for 0.6 s and clear of the caption, shadows warm, accent on one object only.
 4. Fix every FAIL and go back to 1. At most three rounds; after that, render and write the remaining faults plainly in
    the delivery note.
 
-Targets come from the bom-hidrogen reference video (`check.py calibrate <mp4>`), the bar for finish, grade and photo
-look. `targets.json` is calibrated on a warm photo look, so a UI-led reel is judged against a seller reel with
-`check.py compare` (for example `--ref ../../workspace/projects/worked-reels/hf-hook-v5.mp4`) rather than failing on warm
-targets alone. Staging, camera and transitions are judged against the seller reels. Recalibrate when the creator names
-a new bar.
+Targets come from the reference video the creator names: `check.py calibrate <ref.mp4>` rewrites `scripts/targets.json`
+with luma, contrast, motion, crushed black and blown white, plus the tolerance each is judged at. `targets.json` is
+calibrated on a warm photo look, so a UI-led reel is judged against a seller reel with `check.py compare`
+(for example `--ref ../../workspace/projects/worked-reels/hf-hook-v5.mp4`) rather than failing on warm targets alone.
+Staging, camera and transitions are judged against the seller reels. Recalibrate when the creator names a new bar.
 
 ## Curation
 

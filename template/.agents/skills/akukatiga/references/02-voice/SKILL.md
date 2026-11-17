@@ -1,5 +1,7 @@
 # 2 — Voice + caption
 
+**Gerbang mesin**: `node ../../scripts/py.mjs scripts/check.py stage <slug> 2` — harus `exit 0`.
+
 **Tujuan**: satu take suara utuh, caption yang cocok dengan kata yang diucapkan, dan timing per kata.
 **Masuk**: `plans/script.txt`. **Keluar**: `assets/voice.mp3`, `plans/voice.alignment.json`,
 `plans/caption.txt`, `plans/words.json`.

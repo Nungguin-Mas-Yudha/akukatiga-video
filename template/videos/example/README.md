@@ -32,7 +32,8 @@ Isi yang satu tidak menggantikan yang lain.
 |---|---|---|
 | `plans/` | `script.txt` | naskah final yang dibacakan |
 | | `caption.txt` | caption upload, maksimal 2 baris |
-| | `plan.md` | rencana visual beat per beat |
+| | `plan.md` | rencana visual beat per beat, tiap baris menyebut objek yang tampil |
+| | `assets.md` | **wajib**: daftar objek → sumber → file → scene; tahap 5 tidak mulai sebelum ini lengkap |
 | | `research.md` | sumber, angka, dan temuannya |
 | | `reel.json` | durasi, fps, format, audio |
 | | `words.json` | kata + timing untuk caption |
@@ -49,6 +50,7 @@ Isi yang satu tidak menggantikan yang lain.
 | | `01.<scene>.tsx` | satu file per scene, berurutan |
 | `compositions/<format>/` | `parts.tsx` | helper angka; `world.tsx` + `core.tsx` hanya untuk 3D/hybrid |
 | `scratch/` | bebas | still, percobaan, cover |
+| root video | `references.md` | kandidat referensi, cek rasio, lisensi per objek |
 
 ## Varian yang diizinkan
 

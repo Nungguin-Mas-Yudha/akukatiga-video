@@ -227,12 +227,13 @@ What a reel may change lives in `src/theme.ts` and the reel's `reel.json`: fonts
 node ../../scripts/py.mjs scripts/voice.py <slug> --audition id:label,...   # a synthetic voice: the creator picks from reels/<slug>/voices/
 node ../../scripts/py.mjs scripts/voice.py <slug>                 # script.txt -> voice.mp3 + voice.alignment.json, whole take, never patched
 node ../../scripts/py.mjs scripts/align.py <slug>                 # caption.txt + voice -> words.json
+node ../../scripts/py.mjs scripts/check.py stage <slug> <n>       # the gate at the end of stage n (1-6)
 node ../../scripts/py.mjs scripts/check.py plan <slug>            # before pixels
 node render.mjs <slug> --stills 1.2,3.45,9      # look before rendering: reels/<slug>/stills/
 node render.mjs <slug> --guides --stills 9      # bands + Instagram's zones drawn on
-node render.mjs <slug> [--from s --to s]        # output/YYYY-MM-DD/NN-<slug>.mp4, 30 fps (--fps 60 for 60)
+node render.mjs <slug> [--from s --to s]        # videos/<slug>/out/YYYY-MM-DD/NN-<slug>.mp4, 30 fps (--fps 60 for 60)
 node render-remote.mjs <slug> [flags]           # the render itself: always on the VPS Labkom GPU (ssh labkm-vps), mp4 back in output/, job folder deleted after; local render only for stills
-node ../../scripts/py.mjs scripts/check.py render <slug> <mp4>    # pace, holds, motion, detail, tone, flashes, Instagram zones, bare handovers
+node ../../scripts/py.mjs scripts/check.py render <slug> <mp4>    # stills, bare handovers, and the targets.json numbers when calibrated
 node ../../scripts/py.mjs scripts/check.py compare <slug> <mp4> --ref <ref.mp4>   # reels/<slug>/review/side-by-side.jpg + scorecard.md for the second reviewer
 node ../../scripts/py.mjs scripts/check.py calibrate <ref.mp4>    # rewrite scripts/targets.json from a reference video
 node ../../node_modules/typescript/bin/tsc --noEmit -p .           # types, before any render

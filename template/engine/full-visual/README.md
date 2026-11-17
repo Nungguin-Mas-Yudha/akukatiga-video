@@ -16,7 +16,7 @@ changes. Scenes are written per reel with a small kit of verbs, and every motion
 ```
 script.txt ──voice.py──▶ voice.mp3 + voice.alignment.json
 caption.txt + voice.mp3 ──align.py──▶ words.json ──┐
-reel.json (theme overrides, pinned chrome) ────────┼──▶ render.mjs ──▶ output/YYYY-MM-DD/NN-slug.mp4
+reel.json (theme overrides, pinned chrome) ────────┼──▶ render.mjs ──▶ videos/<slug>/out/YYYY-MM-DD/NN-slug.mp4
 scenes/*.tsx (what this reel draws) ───────────────┘
 ```
 
@@ -27,13 +27,14 @@ full-visual/
   render.mjs                 stills, guides, a stretch, or the whole reel (sandbox disabled)
   scripts/voice.py           script.txt -> voice.mp3 + voice.alignment.json (ElevenLabs with timestamps; voice in reel.json)
   scripts/align.py           caption.txt + voice -> words.json (exact when voice.alignment.json exists)
-  scripts/check.py           plan: caption, key words, handovers in silence, type floor. render: dead holds, bare ground
+  scripts/check.py           stage: the gate at the end of stage 1-6. plan: caption, key words, handovers in silence,
+                             type floor. render: dead holds, bare ground, targets.json. compare: side by side. calibrate: targets
   src/theme.ts               everything a reel may change: fonts, grounds, marker, roles, stage, handover
   src/engine/                the fixed grammar: timeline, Ground, Caption, Stage (handover), Chrome (pill, terminal),
                              moves + Motion (the kit), context (useScene: f, cue, cueEnd, endsOn)
   registry.ts                finds each video's composition/index.tsx or compositions/index.tsx by itself
   ../../videos/<slug>/       plans/ (caption.txt, reel.json, words.json), assets/ (voice.mp3, media), compositions/, scratch/stills/
-  output/YYYY-MM-DD/         NN-slug.mp4, copied when final to workspace/output/<project folder>/<slug>.mp4
+  videos/<slug>/out/YYYY-MM-DD/   NN-slug.mp4, copied when final to workspace/output/<project folder>/<slug>.mp4
 ```
 
 The packages are the Keyframes folder's own (`npm ci` at its root); Remotion fetches its own browser.
@@ -44,11 +45,14 @@ The packages are the Keyframes folder's own (`npm ci` at its root); Remotion fet
 node ../../scripts/py.mjs scripts/voice.py <slug> --audition id:label,id:label   # the first two sentences per voice -> reels/<slug>/voices/
 node ../../scripts/py.mjs scripts/voice.py <slug>                                  # the whole take, one request, last line verified
 node ../../scripts/py.mjs scripts/align.py <slug>
+node ../../scripts/py.mjs scripts/check.py stage <slug> <1-6>                # the gate at the end of each stage
 node ../../scripts/py.mjs scripts/check.py plan <slug>
 node render.mjs <slug> --stills 1.2,3.45,9        # reels/<slug>/stills/t_001.20.png
 node render.mjs <slug> --guides --stills 9        # bands and Instagram's zones drawn on
 node render.mjs <slug> [--from s --to s] [--out path]
 node ../../scripts/py.mjs scripts/check.py render <slug> <mp4>
+node ../../scripts/py.mjs scripts/check.py compare <slug> <mp4> --ref <ref.mp4>
+node ../../scripts/py.mjs scripts/check.py calibrate <ref.mp4>
 node ../../node_modules/typescript/bin/tsc --noEmit -p .
 ```
 

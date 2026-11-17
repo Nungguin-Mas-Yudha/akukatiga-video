@@ -1,7 +1,22 @@
 # 5 — Composition
 
+**Gerbang mesin**: `node ../../scripts/py.mjs scripts/check.py stage <slug> 5` — harus `exit 0`.
+
+**Prasyarat wajib** — cek dulu, jangan langsung menulis scene:
+1. `plans/assets.md` ada.
+2. Setiap barisnya punya file di `assets/` (cek dengan `ls assets/`).
+3. Objek di scene yang akan dibangun ada di daftar itu.
+
+Kalau salah satu tidak terpenuhi: **berhenti**, balik ke tahap 4, jangan menulis scene. Tidak ada
+pengecualian untuk objek yang "nanti digambar di kode" — objek kode tetap harus terdaftar di
+`plans/assets.md` dengan referensinya.
+
+Sudah terlanjur ada scene tapi `plans/assets.md` tidak ada atau `assets/` cuma berisi `_source/`? Itu bukan
+kemajuan, itu tahap 4 yang dilewati. Jalankan `check.py stage <slug> 5`: gerbangnya kumulatif dan akan
+menunjuk tahap 4. Kumpulkan objeknya dulu; scene yang sudah ada tinggal menunggu, tidak perlu dihapus.
+
 **Tujuan**: scene ditulis ke folder formatnya, dengan aset dari tahap 4 dan timing dari `words.json`.
-**Masuk**: `assets/`, `plans/plan.md`. **Keluar**: `compositions/reels/` dan/atau
+**Masuk**: `assets/`, `plans/assets.md`, `plans/plan.md`. **Keluar**: `compositions/reels/` dan/atau
 `compositions/landscape/`, tiap folder punya `index.tsx` + satu file per scene.
 
 **Gerbang**

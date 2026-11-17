@@ -3,10 +3,8 @@
 Folder ini **bukan video**. Isinya kerangka `videos/<slug>/` tanpa naskah, tanpa media, tanpa scene:
 setiap folder cuma punya `.gitkeep` supaya bentuknya ikut ter-commit dan bisa dilihat langsung.
 
-Aturan yang mengikat tetap di skill channel:
-[`akukatiga-reels`](../../.agents/skills/akukatiga-reels/SKILL.md) dan
-[`akukatiga-landscape`](../../.agents/skills/akukatiga-landscape/SKILL.md), bagian
-**Struktur project (wajib)**. Kalau isi folder ini berbeda dengan skill, ikuti skill.
+Aturan yang mengikat ada di satu skill channel: [`akukatiga`](../../.agents/skills/akukatiga/SKILL.md),
+mulai dari workflow enam tahapnya. Kalau isi folder ini berbeda dengan skill, ikuti skill.
 
 ## Bentuk folder
 

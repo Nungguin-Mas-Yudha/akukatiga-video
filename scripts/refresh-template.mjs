@@ -28,8 +28,8 @@ empty folder skeleton for a new video.
 
 ## Read first
 
-- \`.agents/skills/akukatiga-reels/SKILL.md\` — 9:16 rules: workflow, structure, brand, audio, scenes.
-- \`.agents/skills/akukatiga-landscape/SKILL.md\` — 16:9 rules, same sections.
+- \`.agents/skills/akukatiga/SKILL.md\` — the workflow: six stages, each linking its own folder.
+- \`.agents/skills/akukatiga/references/<NN-stage>/SKILL.md\` — the step to do next; open one stage at a time.
 - \`videos/example/README.md\` — the folder a new video copies, with the expected file names.
 - \`README.md\` — channel overview, commands, standard structure.
 

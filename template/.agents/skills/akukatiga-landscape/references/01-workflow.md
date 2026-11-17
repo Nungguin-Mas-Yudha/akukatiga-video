@@ -11,3 +11,8 @@ Seven stages. Each ends with one line in chat saying what comes next, in plain w
 | 5 | The hardest passage | the hardest 60 s built first as a draft; it is also the film's styleframe (no separate storyboard round) | machine scan; the creator watches with sound; one reviewer, FAIL table only. Nothing else is built until the creator accepts it | `references/04-look-and-frame.md`, `references/13-direction.md` section 5 |
 | 6 | Chapters | chapter by chapter, one builder at a time; each chapter a draft with sound; the sound room places music and effects (`sound/spotting.md`, `node scripts/audio-check.mjs`) | per chapter: `node scripts/qc-scan.mjs <film> <chapter>` (Haiku runs it; pops, black, freeze, loudness, contact sheets; exits 1 on a pop), the creator's watch, one reviewer (FAIL table only), **at most 2 rounds**, round 2 on changed scenes only; remaining faults go in the delivery note | same, and `references/07-sound.md`, `references/14-sound-room.md` |
 | 7 | Final + package | `node render.mjs <film> all` -> `node deliver.mjs <film>`; thumbnails (3 concepts), `description.md`, 3 short clips marked by timecode | `scripts/check.mjs` exits 0 (1440p, 24 fps, length, encode, loudness, true peak, no 6 s freeze, no black hole, subtitles, chapters); every credit the licence asks for is in the description; no hashtags or em dashes | `references/06-delivery.md`, `references/12-thumbnails.md` |
+
+Stage 4 is also where assets are gathered: one reference and licence row per object that appears, plates and
+cut-outs for 2.5D, footage and logos, before the scene that needs them is built. The rules are the reels'
+`references/11-image-assets.md` and `references/object-references.md`; a picture that appears on screen is fetched
+or redrawn, never AI-generated.

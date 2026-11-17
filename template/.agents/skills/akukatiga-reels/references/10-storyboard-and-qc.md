@@ -70,6 +70,19 @@ look. `targets.json` is calibrated on a warm photo look, so a UI-led reel is jud
 targets alone. Staging, camera and transitions are judged against the seller reels. Recalibrate when the creator names
 a new bar.
 
+## Curation
+
+The creator judges the reel in the browser, not in files. `npm run studio -- <slug>` opens the real
+composition with the voice and the props the render would use; a scene is watched with a little context on
+each side, so the seam can be judged too.
+
+- Mark every scene `belum direview`, `revisi` or `disetujui`. A scene that opens and plays is not approved;
+  approval is the creator's word on the picture.
+- Never encode a per-scene MP4 for curation. If the preview cannot open, the judgement waits; source review is
+  not visual approval.
+- A revision edits the source, reloads the preview, and is re-judged on that scene only.
+- One master per format, rendered after every scene in that format is `disetujui`.
+
 ## Traps
 
 - Judging motion on a contact sheet: holds hide between the frames. The metrics and 60 fps bursts see them.

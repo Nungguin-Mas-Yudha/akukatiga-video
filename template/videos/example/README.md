@@ -56,8 +56,8 @@ Isi yang satu tidak menggantikan yang lain.
 
 - **Dua format** (reels + landscape, kasus biasa): `compositions/reels/` dan `compositions/landscape/`,
   masing-masing punya `index.tsx` sendiri.
-- **Satu format**: cukup `composition/` (tunggal) berisi `index.tsx` + scene. Jangan bikin `composition/`
-  dan `compositions/` sekaligus dalam satu video.
+- **Satu format**: tetap sebut namanya — `compositions/reels/` saja atau `compositions/landscape/` saja,
+  dengan `index.tsx` di dalamnya. Tidak ada `composition/` datar.
 - **3D/hybrid**: tambah `world.tsx` dan `core.tsx` di dalam folder format yang dipakai; scene tetap tipis.
 
 `out/` tidak disiapkan di kerangka ini: `render.mjs` membuat `out/YYYY-MM-DD/NN-<slug>.mp4` sendiri, dan
@@ -71,4 +71,4 @@ Kalau satu format punya dua dokumen tertulis, taruh keduanya di `storyboard/scri
 
 ## Yang tidak boleh muncul
 
-`videos/<slug>/script/`, `videos/<slug>/scripts/`, `notes/`, `production/`, `utils/`, `src/`, `public/`, `assets/models/`, `assets/textures/`.
+`videos/<slug>/composition/`, `videos/<slug>/script/`, `videos/<slug>/scripts/`, `notes/`, `production/`, `utils/`, `src/`, `public/`, `assets/models/`, `assets/textures/`.

@@ -29,9 +29,9 @@ videos/<slug>/
 
 - `plans/` = kata dan rencana. `storyboard/` = papan: bentuk tulisan di `script/`, bentuk gambar di
   `visual/`. Naskah final tidak di `storyboard/`, papan tidak di `plans/`.
-- Dua format memakai `compositions/reels/` dan `compositions/landscape/`, masing-masing dengan `index.tsx`.
-  Satu format cukup `composition/` (tunggal). Jangan bikin `composition/` dan `compositions/` sekaligus;
-  entry `index.tsx` itulah yang mendaftarkan video ke studio/render.
+- Selalu `compositions/reels/` dan/atau `compositions/landscape/`, masing-masing dengan `index.tsx`. Nama
+  formatnya wajib eksplisit, termasuk untuk video satu format; tidak ada `composition/` datar.
+- Entry `index.tsx` itulah yang mendaftarkan video ke studio/render.
 - Aset datar di `assets/`, tanpa subfolder per jenis (`images/`, `audio/`, `raw/`).
 - Helper khusus video: `parts.tsx` di folder formatnya. Helper lintas video: `engine/`. Jangan bikin `utils/` baru di project.
 - Tidak ada `script/`, `notes/`, `production/`, `utils/`, `src/`, atau `public/` di dalam `videos/<slug>/`.
@@ -47,7 +47,7 @@ tanpa naskah atau media contoh. Salin bentuk itu; jangan mengarang folder sendir
 scene-nya jadi tipis:
 
 ```text
-compositions/<format>/     (satu format saja: composition/)
+compositions/<format>/     reels/ atau landscape/
 ├── index.tsx        registri scene (sama seperti 2D)
 ├── world.tsx        satu dunia: kamera (camAt/cam3At, threeCam), project, quadMatrix, rand (seeded),
 │                    material, light plan, komponen benda (Shot, Lens, Lights, Phone3D, ...)

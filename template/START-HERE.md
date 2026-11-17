@@ -29,7 +29,8 @@ videos/<slug>/
 └── README.md
 ```
 
-- One format only: use `composition/` instead of `compositions/{reels,landscape}`. Never both.
+- Always name the format: `compositions/reels/` and/or `compositions/landscape/`, each with its own
+  `index.tsx`. There is no flat `composition/`.
 - `out/` is not created by hand: `render.mjs` writes `out/YYYY-MM-DD/NN-<slug>.mp4`, and `.mp4` is
   never committed.
 - Do not invent `script/`, `scripts/`, `notes/`, `production/`, `utils/`, `src/`, `public/` inside a video.

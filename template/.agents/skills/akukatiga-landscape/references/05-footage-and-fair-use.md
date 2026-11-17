@@ -57,7 +57,7 @@ A clip without its row is not placed. A licence that could not be read on the fi
 Haiku fetches candidates from several sources (5-10 per need) and saves them with their page URLs into
 `films/<film>/assets/`. Opus picks on quality first (sharp at full size: 2560 px or more on the long side for a full
 frame photo, 1440p or better for footage; no watermark; no burned-in captions) and writes the row. Pictures used only
-as references to redraw from need no licence (`full-visual/references/11-image-assets.md`, References are free).
+as references to redraw from need no licence (`akukatiga-reels/references/11-image-assets.md`, References are free).
 
 ## On screen
 

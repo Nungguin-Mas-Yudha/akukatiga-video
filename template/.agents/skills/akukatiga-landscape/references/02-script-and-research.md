@@ -41,7 +41,7 @@ written to be heard.
 
 ## caption.txt (stage 3)
 
-The same file format as the reels (`full-visual/references/01-script-and-caption.md`), read by the same `align.py`.
+The same file format as the reels (`akukatiga-reels/references/02-script-and-caption.md`), read by the same `align.py`.
 Here it drives the scenes and the subtitles, not an on-screen caption:
 
 ```

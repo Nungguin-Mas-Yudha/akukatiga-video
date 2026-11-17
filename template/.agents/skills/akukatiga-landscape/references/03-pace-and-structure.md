@@ -37,12 +37,12 @@ every 4 s: calmer than a reel, never a slideshow. Re-measure for a new voice and
 
 ## The camera
 
-- It moves for a cause the viewer can see (`full-visual/references/07-camera-and-transitions.md`), and the reels' moves at film
+- It moves for a cause the viewer can see (`akukatiga-reels/references/08-camera-and-transitions.md`), and the reels' moves at film
   size: a push of 5-15 % across a shot, a push-in on a key word, a dive or reveal once a chapter, moves eased over
   1-3 s (not the reels' 0.5 s snaps),  a pan that crosses the frame in 7 s or more (faster judders at 24 fps).
 - Photos always move (`Plate` pushes across its scene by default). A fast move gets motion blur
   (`@remotion/motion-blur`), which is also what makes 24 fps read as film.
-- Every shot has its own angle (`full-visual/references/07-camera-and-transitions.md`, Angles).
+- Every shot has its own angle (`akukatiga-reels/references/08-camera-and-transitions.md`, Angles).
 
 ## Building a chapter
 

@@ -94,7 +94,7 @@ Jalankan dari folder project-nya (path `engine/`, `workspace/` relatif ke root p
 
 A calm English voice tells the untold stretch before a breakthrough was recognised: the doubt, the rejection, the
 years. The screen shows what the voice is about, in sync with the words, as one film. It is the reel format's craft
-(`.agents/skills/full-visual/`) at film length, with the reels' visual bar and variety. The Before the Prize brand kit is only the logo sting and the end screen, never the look of a scene or a thumbnail (`references/04-look-and-frame.md`).
+(`.agents/skills/akukatiga-reels/`) at film length, with the reels' visual bar and variety. The Before the Prize brand kit is only the logo sting and the end screen, never the look of a scene or a thumbnail (`references/04-look-and-frame.md`).
 
 **This is not AkuKatiga.** The rules in `CLAUDE.local.md` about the Ongky voice, Indonesian, narration-only sound and
 the AkuKatiga look do not apply here. What still applies from it: Opus for every thinking job at medium effort, Haiku
@@ -105,10 +105,10 @@ the AkuKatiga look do not apply here. What still applies from it: Opus for every
 
 Carries over (read the named reel references when the stage comes):
 - The real thing is the picture: machines, cells, crystals, documents and places redrawn at their own geometry,
-  checked against fetched references (`full-visual/references/object-references.md`).
+  checked against fetched references (`akukatiga-reels/references/object-references.md`).
 - Sync: a change lands on the spoken word that names it, through `cue("word")`, never a typed time.
 - One thread object per chapter, objects carried between scenes, setups paid off later
-  (`full-visual/references/12-treatment.md`).
+  (`akukatiga-reels/references/12-treatment.md`).
 - Depth by layer: places in 2.5D planes, objects that turn as projected 3D drawn in 2D, fire and smoke as Skia
   shaders ("Aturan visual" above). No Three.js, no Blender.
 - Numbers count, roll or fill and land on their word. A change of state happens to the object already on screen.

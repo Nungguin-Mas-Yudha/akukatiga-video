@@ -3,7 +3,7 @@
 Full-screen animated explainer reels, the reference format: no presenter, a voice, a word-by-word caption at the top,
 and under it the real thing each sentence is about, redrawn and moving on the word. Zero cuts. 1080x1920, 60 fps.
 
-How to make one, and why each rule exists: `.agents/skills/full-visual/` (the skill is the manual). Where the rules
+How to make one, and why each rule exists: `.agents/skills/akukatiga-reels/` (the skill is the manual). Where the rules
 come from: the reference study.
 
 ## The idea

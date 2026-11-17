@@ -24,7 +24,7 @@ no invented facts, politics out.
 
 ## The bar: read these before a first scene
 
-From `.agents/skills/full-visual/references/`:
+From `.agents/skills/akukatiga-reels/references/`:
 
 | File | What to take |
 |---|---|
@@ -58,7 +58,7 @@ style (outlines on dark, one accent) reads as monochrome and boring, whatever th
 ## The director
 
 The reel format's director tests run on the hardest passage and every chapter's contact sheet
-(`full-visual/references/10-storyboard-and-qc.md`, Director tests), results written in `storyboard.md`:
+(`akukatiga-reels/references/10-storyboard-and-qc.md`, Director tests), results written in `storyboard.md`:
 
 - **Comic test.** The stills alone, with no sound, tell the story in three sentences that match the script.
 - **Surprise test.** At least 3 moments per chapter the viewer would not predict, each named with its still.

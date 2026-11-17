@@ -29,7 +29,7 @@ One page, `films/<film>/direction.md`:
 
 ## 2. The camera speaks
 
-A move has a cause on screen and a meaning (`full-visual/references/07-camera-and-transitions.md`):
+A move has a cause on screen and a meaning (`akukatiga-reels/references/08-camera-and-transitions.md`):
 
 | Move | Means | Use |
 |---|---|---|
@@ -86,7 +86,7 @@ inside the real thing:
 - **The real object, cloned from references.** The trackpad film is the actual MacBook on a wooden desk, its
   trackpad cut open to the real coil, magnets, sensor and hinge, so close to the real thing it reads as a product
   render. Every physical object in a mechanism is built from fetched references (photos, teardowns, micrographs,
-  crystal structures, patents) laid side by side with the build and measured (`full-visual/references/object-references.md`):
+  crystal structures, patents) laid side by side with the build and measured (`akukatiga-reels/references/object-references.md`):
   proportions, layer thicknesses, materials, colours, the small parts. "Close enough" is a fail.
 - **A hidden layer revealed over the real thing.** The keyboard film shows the real iOS keyboard, then lights the
   invisible hit regions on it. The idea is drawn onto or into the object, not beside it on a board.

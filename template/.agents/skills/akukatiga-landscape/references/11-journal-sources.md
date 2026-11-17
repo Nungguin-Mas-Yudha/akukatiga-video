@@ -49,7 +49,7 @@ never send it without the creator's say-so.
 | CC0, public domain | yes, credited anyway | yes |
 | CC BY (any version) | yes, with the credit line: authors, title, journal, year, DOI, licence, and "adapted" if we changed it | yes |
 | CC BY-SA | avoid; only when nothing else exists, with the reason in `references.md` (share-alike may reach the film) | yes |
-| CC BY-NC, CC BY-ND, all rights reserved, unknown | never | yes: redraw from the measured proportions, never trace line for line (`full-visual/references/11-image-assets.md`, References are free) |
+| CC BY-NC, CC BY-ND, all rights reserved, unknown | never | yes: redraw from the measured proportions, never trace line for line (`akukatiga-reels/references/11-image-assets.md`, References are free) |
 
 A redrawn scientific figure keeps the paper's science exactly (the order of levels, the ratios, the labels) and is
 credited as "after <authors>, <year>" in `references.md` and the description.
@@ -62,7 +62,7 @@ credited as "after <authors>, <year>" in `references.md` and the description.
 2. **Script QC:** the Science Editor checks each mechanism step against its excerpt in `sources.md`, and greps
    `research/<id>/text.md` only at the named section when the excerpt is not enough. Never a whole paper.
 3. **Visual plan:** each science scene names the figure it is drawn from (`research/<id>/figures.json`), and whether
-   it is shown (CC BY) or redrawn. The scene is laid beside the figure in the check (`full-visual/references/object-references.md`, The check):
+   it is shown (CC BY) or redrawn. The scene is laid beside the figure in the check (`akukatiga-reels/references/object-references.md`, The check):
    the order, the ratios and the labels must match.
 4. **Description:** every shown or adapted figure is credited.
 

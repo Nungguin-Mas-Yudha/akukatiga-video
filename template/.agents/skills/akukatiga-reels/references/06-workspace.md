@@ -15,7 +15,7 @@ video's project folder. Follow this page whenever a prompt names a project in `w
 - Create the folder and `project.json` if they are missing.
 - Save the findings as `research.md` in that folder.
 - Every fact has its source link, checked today.
-- This format's lanes are in `.agents/skills/full-visual/references/04-research-lanes.md`.
+- This format's lanes are in `.agents/skills/akukatiga-reels/references/05-research-lanes.md`.
 
 ## Step 2: Transcript (`/full-visual-script`)
 
@@ -74,4 +74,4 @@ a good video. So:
 - **OpenAI or Fish Audio:** no audio tags. Pick a lively, fast voice, and time it with recognition as the
   `full-visual` skill says. Tell the buyer once that ElevenLabs gives the best result for this format.
 
-The bar for the picture and the motion is `.agents/skills/full-visual/references/taste.md`.
+The bar for the picture and the motion is `.agents/skills/akukatiga-reels/references/taste.md`.

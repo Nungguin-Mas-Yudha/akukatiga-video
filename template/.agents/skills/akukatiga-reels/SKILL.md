@@ -5,6 +5,9 @@ description: "Produksi video Reels/Shorts 9:16 untuk channel AkuKatiga. Suara On
 
 # AkuKatiga Reels (9:16)
 
+This skill is the whole kit for the format: the engine grammar and scene rules (the reference files here) plus the
+AkuKatiga channel rules below. Where a channel rule differs, the channel rule wins.
+
 ## Stages and gates
 
 Every stage, what it takes in and gives out, and the gate it must pass before the creator sees anything: [`references/01-workflow.md`](references/01-workflow.md).
@@ -157,7 +160,7 @@ headers: they are things to look at, not descriptions to trust.
 `scripts/targets.json`, calibrated on that video. `targets.json` is calibrated on a warm photo look, so a UI-led reel is
 judged against a seller reel with `check.py compare` rather than failing on warm targets alone.
 
-When the prompt names a project in `workspace/projects/`, read `.agents/skills/full-visual/references/05-workspace.md`
+When the prompt names a project in `workspace/projects/`, read `.agents/skills/akukatiga-reels/references/06-workspace.md`
 first and follow it.
 
 ## The brief

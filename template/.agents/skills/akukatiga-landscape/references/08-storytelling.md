@@ -60,5 +60,5 @@ question the story just raised.
 - Science claims are facts like any other: each step of a mechanism needs its row in `sources.md` (a review paper,
   a textbook, the Royal Swedish Academy's scientific background, a university page). A simplification is fine; a
   wrong picture is not.
-- The code-drawn mechanism scenes (`full-visual/references/02-sentence-to-picture.md`) are where this format beats
+- The code-drawn mechanism scenes (`akukatiga-reels/references/03-sentence-to-picture.md`) are where this format beats
   a talking head: each step of the climb is one drawn state, changing on its word.

@@ -6,6 +6,8 @@
 1. `plans/assets.md` ada.
 2. Setiap barisnya punya file di `assets/` (cek dengan `ls assets/`).
 3. Objek di scene yang akan dibangun ada di daftar itu.
+4. `assets/_sheet.jpg` ada dan creator sudah menyetujuinya. Belum ada sheet = aset belum disetujui, dan
+   still pertama belum boleh dibuat.
 
 Kalau salah satu tidak terpenuhi: **berhenti**, balik ke tahap 4, jangan menulis scene. Tidak ada
 pengecualian untuk objek yang "nanti digambar di kode" — objek kode tetap harus terdaftar di

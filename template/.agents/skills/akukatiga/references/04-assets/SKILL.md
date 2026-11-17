@@ -10,8 +10,11 @@ sebelum satu scene pun ditulis.
 **Masuk**: `plans/plan.md` yang sudah disetujui. **Keluar**:
 1. `plans/assets.md` — tabel wajib, satu baris per objek yang tampil:
    `objek | scene | jenis (plate/cut-out/ghost/logo/footage/kode) | file di assets/ | sumber | lisensi | status`
-2. file nyatanya di `assets/` (nama menyebut objeknya: `plate-lab.jpg`, `tank-cutout.png`, `tank-ghost.png`),
-3. `references.md` di root video untuk detail kandidat, cek rasio, dan label kejujuran.
+2. file nyatanya di `assets/` (nama menyebut objeknya: `plate-lab.jpg`, `tank-cutout.png`,
+   `tank-ghost.png`, `apar-tank.glb` + `tex-apar-label.png`),
+3. `references.md` di root video untuk detail kandidat, cek rasio, dan label kejujuran,
+4. **`assets/_sheet.jpg`** — kontak sheet semua aset dengan label nama file. Ini artefak visual tahap ini
+   dan yang ditunjukkan ke creator untuk disetujui sebelum scene pertama ditulis.
 
 **Gerbang** — semua harus benar, bukan sebagian:
 - **Gerbang mesin** (kumulatif): `stage <slug> <n>` menjalankan tahap 1..n. Jadi `stage <slug> 5` gagal
@@ -20,6 +23,8 @@ sebelum satu scene pun ditulis.
 - `assets/_source/` hanya referensi suasana: **tidak pernah** boleh jadi nilai kolom `file` di `assets.md`.
 - Setiap scene di `words.json` punya baris di `assets.md`; scene yang benar-benar tanpa gambar ditulis
   `tanpa aset`. Scene tanpa baris = FAIL.
+- `assets/_sheet.jpg` ada dan creator sudah melihatnya. Aset yang belum dilihat creator belum disetujui,
+  dan scene yang dibangun di atasnya dikerjakan ulang kalau asetnya berubah.
 - Setiap objek punya baris lisensi **sebelum** digambar; lisensi yang tidak terbaca dihitung "tidak ada".
 - Objek yang digambar di kode ikut terdaftar, dengan baris referensinya — bukan jalan pintas.
 - Tidak ada gambar AI di layar (keputusan creator 2026-10-29); generasi hanya untuk referensi suasana di
@@ -32,6 +37,7 @@ Perintah itu memeriksa tiap baris `plans/assets.md` terhadap isi `assets/`, jadi
 
 | File | Untuk |
 |---|---|
+| [`asset-pipeline.md`](asset-pipeline.md) | **baca dulu**: standar `cara-kerja-apar` — 3D/GLB, HDR, tekstur, generator, kontak sheet |
 | [`image-assets.md`](image-assets.md) | plate, cut-out, states, dari mana gambar datang, aturan lisensi |
 | [`object-references.md`](object-references.md) | cara mengambil, mengukur, dan mencatat referensi objek |
 | [`three-d-look-and-plates.md`](three-d-look-and-plates.md) | kapan gambar datar, kapan 3D asli, kapan hybrid |

@@ -24,7 +24,7 @@ Di mana aturan format dan aturan teknis bertentangan, aturan format menang.
 | 1 | **Script** | naskah creator diterima apa adanya; jangan riset ulang isinya | [`references/01-script/SKILL.md`](references/01-script/SKILL.md) |
 | 2 | **Voice + caption** | creator memilih suara; satu take utuh, jangan disambung; `check.py plan` lolos; semua baris `!` dari align selesai | [`references/02-voice/SKILL.md`](references/02-voice/SKILL.md) |
 | 3 | **Treatment + plan** | creator menyetujui hook, treatment, dan plan **dalam kata** sebelum ada pixel; tiap beat punya aktor dan tempat | [`references/03-treatment/SKILL.md`](references/03-treatment/SKILL.md) |
-| 4 | **Assets** — **wajib, tidak boleh dilewati** | `plans/assets.md` ada dan **setiap barisnya punya file nyata di `assets/`**; tiap objek yang tampil punya referensi + baris lisensi sebelum digambar; tidak ada gambar AI di layar | [`references/04-assets/SKILL.md`](references/04-assets/SKILL.md) |
+| 4 | **Assets** — **wajib, tidak boleh dilewati** | `plans/assets.md` ada dan **setiap barisnya punya file nyata di `assets/`**; `assets/_sheet.jpg` ada dan creator sudah melihatnya; tiap objek punya referensi + lisensi; tidak ada gambar AI di layar | [`references/04-assets/SKILL.md`](references/04-assets/SKILL.md) |
 | 5 | **Composition** | **tidak mulai sebelum `plans/assets.md` lengkap** dan tiap scene menyebut objek yang ada di daftar itu. pass 1: 8-12 detik tersulit dulu, `check.py render` lolos, satu reviewer Opus, creator setuju. pass 2: sisanya, cek mesin per scene, kurasi di browser dengan suara, status `belum direview`/`revisi`/`disetujui` | [`references/05-composition/SKILL.md`](references/05-composition/SKILL.md) |
 | 6 | **Sound + deliver** | loudness sekitar -14 LUFS, true peak maksimal -1 dBTP, kedua cek lolos pada file final; master per format, bukan crop | [`references/06-deliver/SKILL.md`](references/06-deliver/SKILL.md) |
 
@@ -92,7 +92,8 @@ videos/<slug>/
   AI di layar (keputusan creator 2026-10-29); generasi hanya untuk referensi suasana di `assets/_source/`.
 - **Tahap asset tidak boleh dilewati.** Menulis scene sebelum `plans/assets.md` ada = melanggar. "Nanti
   asetnya kugambar di kode" bukan alasan: objek yang digambar di kode tetap harus terdaftar di
-  `plans/assets.md` dengan baris referensinya.
+  `plans/assets.md` dengan baris referensinya. Standar aset yang matang (GLB, HDR, tekstur, kontak sheet)
+  ada di [`references/04-assets/asset-pipeline.md`](references/04-assets/asset-pipeline.md).
 - **Model**: Opus (effort MEDIUM) untuk semua kerja berpikir; Haiku 5.5 untuk fetch, unduh, alignment, render,
   qc-scan. Sonnet tidak dipakai.
 - **Loudness**: -14 LUFS, true peak ≤ -1 dBTP, voice asli tidak diubah.

@@ -74,6 +74,11 @@ videos/<slug>/
 rmSync(template, { recursive: true, force: true })
 mkdirSync(template, { recursive: true })
 
+// The channel checkout is a working tree, so it holds things the published package must never carry:
+// Python bytecode from the check scripts, nested installs, and local build output.
+const SKIP = new Set(["__pycache__", "node_modules", "dist", ".keyframes", ".git"])
+const keep = (src) => !SKIP.has(src.split("/").pop()) && !src.endsWith(".pyc")
+
 for (const name of FILES) {
   const src = join(root, name)
   if (!existsSync(src)) throw new Error(`${name} is missing at ${root}`)
@@ -82,7 +87,7 @@ for (const name of FILES) {
 for (const name of DIRS) {
   const src = join(root, name)
   if (!existsSync(src)) throw new Error(`${name}/ is missing at ${root}`)
-  cpSync(src, join(template, name), { recursive: true })
+  cpSync(src, join(template, name), { recursive: true, filter: keep })
 }
 
 // npm strips a file named .gitignore from the tarball; ship it as "gitignore" and let the installer

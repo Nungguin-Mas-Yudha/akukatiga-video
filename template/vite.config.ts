@@ -50,6 +50,20 @@ function buildAssetManifest(root: string) {
   return out;
 }
 
+// Reel.tsx falls back to engine/full-visual/registry.ts (webpack's require.context) when scenes are not passed.
+// Under Vite that file cannot run: point that one import at the import.meta.glob registry the editor uses.
+function editorRegistry(): Plugin {
+  const registry = path.resolve(here, "engine/custom-editor/src/registry.vite.ts");
+  return {
+    name: "editor-registry",
+    enforce: "pre",
+    resolveId(source, importer) {
+      if (source === "../registry" && importer?.endsWith("/engine/full-visual/src/Reel.tsx")) return registry;
+      return null;
+    },
+  };
+}
+
 // Serves videos/<slug>/assets/<file> at /<slug>/<file> (what staticFile() asks for) plus a manifest of the 3D
 // assets, so .glb/.hdr load with the right MIME type and byte ranges while scrubbing.
 function reelAssets(): Plugin {
@@ -143,7 +157,7 @@ function reelAssets(): Plugin {
 
 export default defineConfig({
   root: here,
-  plugins: [react(), reelAssets()],
+  plugins: [editorRegistry(), react(), reelAssets()],
   resolve: {
     // One copy of each 3D/React library, or the canvas contexts fight each other.
     dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei", "@remotion/three", "remotion"],
@@ -169,7 +183,8 @@ export default defineConfig({
     host: "0.0.0.0",
     strictPort: false,
     allowedHosts: true,
-    hmr: false,
+    // Hot reload on: scene edits refresh in place, plans/registry edits fall back to a full reload.
+    hmr: true,
     fs: { allow: [here] },
     warmup: {
       clientFiles: [

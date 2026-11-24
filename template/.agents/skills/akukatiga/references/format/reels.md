@@ -66,7 +66,13 @@ compositions/<format>/     reels/ atau landscape/
   Jangan bikin `assets/models/`, `assets/textures/`.
 - Engine menyediakan rig tetap `src/engine/Stage3D.tsx` untuk scene yang tidak perlu light mengikuti event; hybrid yang
   butuh itu memakai `ThreeCanvas` langsung.
-- Render 3D di laptop GPU (`node render.mjs <slug> --gl angle`), **jangan** di VPS Labkom (tanpa GPU, ~9× lebih lambat).
+- **Pola Continuous One-Take 3D (opsional via `__world`):**
+  - Default (non-continuous): tiap scene boleh merender `<World3D>` / `<Stage3D>` sendiri seperti biasa.
+  - Jika video menginginkan **semua scene menyatu tanpa jeda/kedip WebGL** (seakan satu shot kamera kontinu):
+    1. Daftarkan komponen 3D persisten pada key `__world` di `compositions/<format>/index.tsx` (engine `Reel.tsx` me-render `__world` sekali di antara `<Ground />` dan `<Stage />`, tepat di bawah `<Finish />` dan `<Caption />`, sehingga `<ThreeCanvas>` tidak pernah di-unmount antar scene).
+    2. Komponen `__world` membaca `useReel()` + `useCurrentFrame()` (fungsi murni dari `f`, tanpa `useFrame`/`Math.random`) untuk menginterpolasi kamera, pencahayaan, dan seluruh aktor 3D lintas scene secara kontinu.
+    3. Tetap pertahankan semua file scene (`01.….tsx`, `02.….tsx`, dst.) di `index.tsx` dengan `Comp.keep = true` untuk memegang HUD/badge/pill 2D dan cue teks masing-masing scene di atas layer 3D (tanpa merender `<ThreeCanvas>` di dalam file scene).
+- Render 3D di laptop GPU (`node render.mjs <slug> --gl vulkan` di Linux AMD RADV / `--gl angle` di Windows), **jangan** di VPS Labkom (tanpa GPU, ~9× lebih lambat).
 
 ## Batas kerja QC
 

@@ -26,16 +26,24 @@ function slugFromPath(file: string): string {
   return m ? m[1] : file;
 }
 
-const entries: [string, SceneMap][] = [];
+const entries: Record<string, SceneMap> = {};
 for (const [file, mod] of Object.entries(found)) {
-  entries.push([slugFromPath(file), mod.scenes]);
+  entries[slugFromPath(file)] = mod.scenes;
 }
-for (const [file, mod] of Object.entries(perFormat)) {
+// Videos that only keep one composition per format under compositions/ still need a bare slug key: plans with
+// words.json alone resolve as format "default", and Reel then asks for reels[slug]. Prefer reels, like the
+// webpack registry does.
+const sortedFormats = Object.entries(perFormat).sort(
+  ([a], [b]) => Number(b.includes("/reels/")) - Number(a.includes("/reels/")),
+);
+for (const [file, mod] of sortedFormats) {
   const m = /videos\/([^/]+)\/compositions\/(reels|landscape)\//.exec(file);
-  if (m) entries.push([`${m[1]}:${m[2]}`, mod.scenes]);
+  if (!m) continue;
+  entries[`${m[1]}:${m[2]}`] = mod.scenes;
+  if (!entries[m[1]]) entries[m[1]] = mod.scenes;
 }
 
-export const reels: Record<string, SceneMap> = Object.fromEntries(entries);
+export const reels: Record<string, SceneMap> = entries;
 
 export const worldSlugs = new Set(
   [...Object.keys(worlds), ...Object.keys(formatWorlds)].map(slugFromPath),

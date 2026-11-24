@@ -34,11 +34,15 @@ Thumbs.db
 
 # Per video: render dan still tinjauan tetap lokal
 videos/*/scratch/stills/
+videos/*/scratch/cover/
+videos/*/scratch/render_log.txt
 
 # Video hasil render tidak di-commit dulu (file tetap ada di disk)
+videos/*/out/
 
 # Toolkit runtime: node/ffmpeg, cache, dan build editor (dibuat ulang otomatis)
 .keyframes/
+/whisper.cpp/
 
 # Python bytecode dari skrip engine
 __pycache__/

@@ -3,7 +3,9 @@
 //   node render.mjs <slug> --stills 1.2,3.45,9      -> videos/<slug>/scratch/stills/t_001.20.png ... (seconds)
 //   node render.mjs <slug> --guides --stills 3      -> with the bands and Instagram's zones drawn on
 //   node render.mjs <slug> --from 4 --to 9          -> only that stretch
-//   node render.mjs <slug> --gl angle               -> WebGL scenes (three.js hooks): swangle cannot make a context here
+//   node render.mjs <slug> --gl vulkan              -> WebGL scenes (three.js hooks) on this Linux GPU (AMD RADV)
+//   node render.mjs <slug> --gl angle               -> WebGL scenes on Windows; on this headless Linux box ANGLE cannot make a context
+//   node render.mjs <slug> --gl swangle             -> software WebGL fallback (no GPU, CI/VPS), ~30-50x slower
 //   node render.mjs <slug> --no-caption             -> without the top word caption (format 1 only; default keeps it)
 // A reel whose reel.json says "format": 2 renders on the format-2 engine (src/v2, composition FullVisual2).
 // Run with the sandbox disabled (Remotion's Chrome).
@@ -113,7 +115,8 @@ serveUrl = await bundle({ entryPoint: path.join(dir, "src/index.ts"), publicDir,
   // Skia's web build imports react-native; the browser bundle gets react-native-web instead
   return { ...sk, resolve: { ...sk.resolve, alias: { ...sk.resolve.alias, "react-native$": "react-native-web" } } };
 } });
-const composition = await selectComposition({ serveUrl, id: config.theme?.layout === "film" ? "FullVisualFilm" : v2 ? "FullVisual2" : "FullVisual", inputProps, browserExecutable });
+const glOpts = opt("--gl") ? { chromiumOptions: { gl: opt("--gl") } } : {};
+const composition = await selectComposition({ serveUrl, id: config.theme?.layout === "film" ? "FullVisualFilm" : v2 ? "FullVisual2" : "FullVisual", inputProps, browserExecutable, ...glOpts });
 const fps = composition.fps;
 
 if (opt("--stills")) {
@@ -121,7 +124,7 @@ if (opt("--stills")) {
   fs.mkdirSync(out, { recursive: true });
   for (const s of opt("--stills").split(",").map(Number)) {
     const output = path.join(out, `t_${s.toFixed(2).padStart(6, "0")}${inputProps.guides ? "_guides" : ""}.png`);
-    await renderStill({ serveUrl, composition, inputProps, browserExecutable, frame: Math.min(composition.durationInFrames - 1, Math.round(s * fps)), output });
+    await renderStill({ serveUrl, composition, inputProps, browserExecutable, ...glOpts, frame: Math.min(composition.durationInFrames - 1, Math.round(s * fps)), output });
     console.log(output);
   }
 } else {
@@ -134,7 +137,7 @@ if (opt("--stills")) {
     codec: "h264", crf: Number(opt("--crf") ?? 16), pixelFormat: "yuv420p", x264Preset: "slow",
     scale: Number(opt("--scale") ?? 1), // 4/3 on a 1920x1080 film delivers 2560x1440
     concurrency: Number(opt("--concurrency") ?? 2), // Remotion's own default is half the cores: too many Chrome tabs next to other builds
-    ...(opt("--gl") ? { chromiumOptions: { gl: opt("--gl") } } : {}), // --gl angle: a WebGL (three.js) scene on the Mac GPU
+    ...glOpts, // --gl angle or swiftshader: a WebGL (three.js) scene
     onProgress: ({ progress }) => process.stdout.write(`\r${Math.round(progress * 100)}%`),
   });
   console.log(`\n${outputLocation}`);

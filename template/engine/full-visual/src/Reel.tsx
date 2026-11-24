@@ -47,12 +47,15 @@ export const Reel: React.FC<ReelProps> = ({ slug, data, config, audio, guides, n
   const formatKey = film ? "landscape" : "reels";
   if (!ready) return null;
   const sceneMap = scenes ?? reels[`${slug}:${formatKey}`] ?? reels[slug] ?? {};
+  // optional persistent continuous 3D world rendered once under <Stage> (zero WebGL remount between scenes)
+  const World = sceneMap.__world;
   // optional reel-wide layer above every scene (scenes map key "__overlay"), e.g. the creator's character in a corner
   const Overlay = sceneMap.__overlay;
   return (
     <ReelContext.Provider value={{ theme, tl, slug }}>
       <AbsoluteFill>
         <Ground />
+        {World && <World />}
         <Stage scenes={sceneMap} />
         <Finish />
         {Overlay && <Overlay />}

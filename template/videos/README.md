@@ -17,3 +17,5 @@ Video:
 - [mie-instan-seminggu](mie-instan-seminggu)
 - [tanpa-air-putih](tanpa-air-putih)
 - [cara-kerja-apar](cara-kerja-apar)
+- [sound-horeg-tiap-hari](sound-horeg-tiap-hari)
+- [charger-murah](charger-murah)
